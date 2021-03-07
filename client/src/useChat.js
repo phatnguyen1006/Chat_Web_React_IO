@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
-const SOCKET_SERVER_URL = "https://chat-web-react-io.vercel.app";
+const SOCKET_SERVER_URL = "localhost:4000";
 
 const useChat = (roomId) => {
   const [messages, setMessages] = useState([]);
@@ -26,8 +26,9 @@ const useChat = (roomId) => {
     };
   }, [roomId]);
 
-  const sendMessage = (messageBody) => {
+  const sendMessage = (messageBody,userName) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
+      user: userName,
       body: messageBody,
       senderId: socketRef.current.id,
     });

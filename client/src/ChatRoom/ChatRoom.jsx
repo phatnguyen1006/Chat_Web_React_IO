@@ -7,13 +7,21 @@ const ChatRoom = (props) => {
   const { roomId } = props.match.params;
   const { messages, sendMessage } = useChat(roomId);
   const [newMessage, setNewMessage] = React.useState("");
+  // userName
+  const [userName, setUserName] = React.useState("");
 
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);
   };
 
+   // UserBox:
+   const handleNewUserName = (event) => {
+    // ... Do something...
+    setUserName(event.target.value);
+  };
+
   const handleSendMessage = () => {
-    sendMessage(newMessage);
+    sendMessage(newMessage,userName);
     setNewMessage("");
   };
 
@@ -29,11 +37,19 @@ const ChatRoom = (props) => {
                 message.ownedByCurrentUser ? "my-message" : "received-message"
               }`}
             >
-              {message.body}
+              {message.user}{ ":\t" }{message.body}
             </li>
           ))}
         </ol>
       </div>
+      <h4>UserName:</h4>
+      <input
+        value={userName}
+        onChange={handleNewUserName}
+        placeholder="Type your username."
+        className="user-input-field"
+      />
+      <br />
       <textarea
         value={newMessage}
         onChange={handleNewMessageChange}

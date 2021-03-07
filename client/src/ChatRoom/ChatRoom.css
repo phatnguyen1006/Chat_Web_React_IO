@@ -34,6 +34,14 @@
     resize: none;
 }
 
+.user-input-field {
+    height: 40px;
+    max-height: 10%;
+    font-size: 12px;
+    padding: 8px 10px;
+    resize: none;
+}
+
 .message-item {
     width: 55%;
     margin: 8px;
