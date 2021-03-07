@@ -15,7 +15,7 @@ const ChatRoom = (props) => {
   };
 
    // UserBox:
-   const handleNewUserName = (event) => {
+  const handleNewUserName = (event) => {
     // ... Do something...
     setUserName(event.target.value);
   };
