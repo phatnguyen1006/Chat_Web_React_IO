@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
-const SOCKET_SERVER_URL = process.env.Server_URL || "localhost:4000";
+const SOCKET_SERVER_URL = process.env.Server_URL || "https://chatapp-server-wolf.t1hackathon.duckdns.org";
 
 const useChat = (roomId) => {
   const [messages, setMessages] = useState([]);
@@ -30,6 +30,8 @@ const useChat = (roomId) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       user: userName,
       body: messageBody,
+      role: null,
+      beVoted: 0,
       senderId: socketRef.current.id,
     });
   };

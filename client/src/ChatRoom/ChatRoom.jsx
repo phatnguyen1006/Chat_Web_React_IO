@@ -25,6 +25,9 @@ const ChatRoom = (props) => {
     setNewMessage("");
   };
 
+  // Test:
+  // console.log(messages);
+
   return (
     <div className="chat-room-container">
       <h1 className="room-name">Room: {roomId}</h1>
