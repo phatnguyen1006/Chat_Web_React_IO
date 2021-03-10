@@ -4,6 +4,7 @@ function cleanup(event, playerList) {
     switch (event) {
         case "newVotes":
             playerList.forEach(player => {
+                player.beVoted = 0;
                 player.whoVote = [];
             });
         default:
